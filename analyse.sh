@@ -40,7 +40,7 @@ for d in $dir; do
 	path_fna="${d}/${fna}"
 
 	# Executar o Prokka
-	prokka --kingdom Bacteria --outdir "${path_roary}data_${id}" --genus Maribacter --locustag "Data_${id}" "${path_fna}" >> $report
+	prokka --cpus 12 --kingdom Bacteria --outdir "${path_roary}data_${id}" --genus Maribacter --locustag "Data_${id}" "${path_fna}" >> $report
 done
 
 # Gravar o horário em que o programa terminou
@@ -65,7 +65,7 @@ for d in $dir; do
 done
 
 # Usar o Roary
-roary -f ${path_results} -e -n -v ${path_roary}*.gff >> $report
+roary -f ${path_results} -e --mafft -p 12 -n -v ${path_roary}*.gff >> $report
 
 # Desativar o ambiente conda
 conda deactivate
