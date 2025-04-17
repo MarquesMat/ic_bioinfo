@@ -24,7 +24,7 @@ echo "Iniciando programa Prokka" > $report
 echo "$(date "+%Y-%m-%d %H:%M:%S")" >> $report
 
 # Ativar o ambinete conda
-source /root/miniconda3/bin/activate
+# source /root/miniconda3/bin/activate
 
 # Diretórios contendo os genomas
 dir=$(find $path_fasta -mindepth 1 -maxdepth 1 -type d -not -name ".")
@@ -35,7 +35,7 @@ dir=$(find $path_fasta -mindepth 1 -maxdepth 1 -type d -not -name ".")
 for d in $dir; do
 	# (( id++ ))
 	id=$(basename $d)
-	# Obter o nome do arquivo *fna
+#	# Obter o nome do arquivo *fna
 	fna=$(ls "${d}" | grep fna)
 	path_fna="${d}/${fna}"
 
@@ -61,11 +61,11 @@ for d in $dir; do
 	path_gff="${d}/${gff}"
 
 	# Copiar para outro diretório e renomear
-	cp "${path_gff}" "${path_roary}data_${id}.gff"
+	cp "${path_gff}" "${path_roary}${id}.gff"
 done
 
 # Usar o Roary
-roary -f ${path_results} -e --mafft -p 12 -n -v ${path_roary}*.gff >> $report
+roary -f ${path_results} -e --mafft -p 12 -n -v ${path_roary}*.gff >> $report # O -g 75000 aumenta o limite de clusters de 50000 para 75000 (não é recomendado)
 
 # Desativar o ambiente conda
 conda deactivate
