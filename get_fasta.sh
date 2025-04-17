@@ -27,7 +27,7 @@ while read -r id; do
     unzip -o -d $path_output $output
     rm $output
     new_fasta="${path_fasta}/${id}"
-    mkdir $new_fasta
+    mkdir -p $new_fasta
     fasta_file=$(find $path_output -mindepth 4 | grep fna)
     cp $fasta_file $new_fasta
     rm -R $path_output
