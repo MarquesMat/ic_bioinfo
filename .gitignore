@@ -1,0 +1,4 @@
+*.fna
+*.gff
+ids/*.txt
+*data_GC*
