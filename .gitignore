@@ -1,4 +1,14 @@
 *.fna
 *.gff
-ids/*.txt
 *data_GC*
+*.fasta
+*.csv
+*.gml
+*.Rtab
+*.aln
+*.txt
+*.clstr
+*.fa
+*.log
+*embl
+*.zip
