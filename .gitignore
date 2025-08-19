@@ -12,3 +12,5 @@
 *.log
 *embl
 *.zip
+*.svg
+*.newick
